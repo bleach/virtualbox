@@ -90,7 +90,7 @@ Reading attributes is simple. Let's use a {VirtualBox::VM} as an example:
     vm = VirtualBox::VM.find("FooVM")
 
     # Accessing attributes:
-    vm.memory
+    vm.memory_size
     vm.name
     vm.boot_order[0]
     vm.bios.io_apic_enabled
@@ -182,7 +182,7 @@ Below is an example of saving a simple {VirtualBox::VM} object:
     vm = VirtualBox::VM.find("FooVM")
 
     # Double the memory
-    vm.memory = vm.memory.to_i * 2
+    vm.memory_size = vm.memory_size.to_i * 2
 
     # This will return true/false depending on success
     vm.save
@@ -190,7 +190,7 @@ Below is an example of saving a simple {VirtualBox::VM} object:
 Below is an example where an exception will be raised if an error occurs:
 
     vm = VirtualBox::VM.find("FooVM")
-    vm.memory = "INVALID"
+    vm.memory_size = "INVALID"
 
     # This will raise an exception, since the memory is invalid
     vm.save(true)
