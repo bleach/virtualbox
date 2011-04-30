@@ -172,10 +172,7 @@ Saving models is _really_ easy: you simply call `save`. That's all! Well, there 
 some subtleties, but that's the basic idea. `save` will typically **also save relationships**
 so if you modify a relationship object or relationship itself, calling `save` on the
 parent object will typically save the relationships as well. `save` always returns
-`true` or `false` depending on whether the operation was a success or not. If you'd like
-instead to know why a `save` failed, you can call the method with a `true` parameter
-which sets `raise_errors` to `true` and will raise a {VirtualBox::Exceptions::CommandFailedException}
-if there is a failure. The message on this object contains the reason.
+`true` or `false` depending on whether the operation was a success or not. 
 
 Below is an example of saving a simple {VirtualBox::VM} object:
 
@@ -187,10 +184,10 @@ Below is an example of saving a simple {VirtualBox::VM} object:
     # This will return true/false depending on success
     vm.save
 
-Below is an example where an exception will be raised if an error occurs:
+Below is an example which will return `false`:
 
     vm = VirtualBox::VM.find("FooVM")
     vm.memory_size = "INVALID"
 
-    # This will raise an exception, since the memory is invalid
-    vm.save(true)
+    # This will return false, since the memory is invalid
+    vm.save
