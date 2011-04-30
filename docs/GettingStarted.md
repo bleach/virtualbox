@@ -105,7 +105,7 @@ Relationships are read the exact same way as attributes. Again using a
     # storage_controllers is a relationship containing an array of all the
     # storage controllers on this VM
     vm.storage_controllers.each do |sc|
-      puts "Storage Controller: #{sc.uuid}"
+      puts "Storage Controller: #{sc.name}"
     end
 
 The difference from an attribute is that while attributes are typically ruby
@@ -140,7 +140,7 @@ Attributes which support modification are modified like standard ruby attributes
 following example uses {VirtualBox::HardDrive}:
 
     hd = VirtualBox::HardDrive.new
-    hd.size = 2000 # megabytes
+    hd.logical_size = 2000 # megabytes
     hd.format = "VMDK"
 
 As you can see, there is nothing sneaky going on here, and does what you expect.
