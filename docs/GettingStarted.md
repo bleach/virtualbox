@@ -57,7 +57,7 @@ This example uses {VirtualBox::VM}, which will probably be the most common
 model you search for.
 
     vm = VirtualBox::VM.find("MyVM")
-    puts "This VM has #{vm.memory} MB of RAM allocated to it."
+    puts "This VM has #{vm.memory_size} MB of RAM allocated to it."
 
 Find can also be used with UUIDs:
 
@@ -92,8 +92,8 @@ Reading attributes is simple. Let's use a {VirtualBox::VM} as an example:
     # Accessing attributes:
     vm.memory
     vm.name
-    vm.boot1
-    vm.ioapic
+    vm.boot_order[0]
+    vm.bios.io_apic_enabled
 
 ### Relationships
 
